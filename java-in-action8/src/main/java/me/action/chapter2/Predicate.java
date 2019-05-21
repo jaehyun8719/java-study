@@ -1,4 +1,4 @@
-package me.action.exam1;
+package me.action.chapter2;
 
 /**
  * Created by IntelliJ IDEA.
