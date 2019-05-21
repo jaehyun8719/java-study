@@ -1,4 +1,4 @@
-package me.action.chapter2;
+package me.action.chapter1;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
