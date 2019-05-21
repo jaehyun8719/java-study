@@ -11,6 +11,6 @@ package me.action.chapter2;
  * Description:
  * Copyright(©) 2019 by jaehyun.
  **/
-public interface Predicate<T> {
-    boolean test(T t);
+public interface ApplePredicate {
+    boolean test(Apple apple);
 }
