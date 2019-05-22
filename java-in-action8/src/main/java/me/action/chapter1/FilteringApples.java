@@ -17,8 +17,7 @@ import java.util.List;
  **/
 public class FilteringApples {
     public static void main(String[] args) {
-        List<Apple> apple = Arrays.asList(new Apple(100, "green")
-                                            , new Apple(160, "red"));
+        List<Apple> apple = Arrays.asList(new Apple(100, "green"), new Apple(160, "red"));
 
         // 1.1 녹색 사과 필터링
         List<Apple> greenApples = filterGreenApples(apple);
@@ -44,6 +43,39 @@ public class FilteringApples {
 
         List<Apple> filterRedApplesPredicate = filterApplesPredicate(apple, new AppleHeavyWeightPredicate());
         System.out.println(filterRedApplesPredicate.toString());
+
+        // 3.1 익명 클래스 사용
+        List<Apple> anonymousRedApples= filterApplesPredicate(apple, new ApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return "red".equals(apple.getColor());
+            }
+        });
+        System.out.println(anonymousRedApples);
+
+        List<Apple> anonymousGreenApples = filterApplesPredicate(apple, new ApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return "green".equals(apple.getColor());
+            }
+        });
+        System.out.println(anonymousGreenApples);
+
+        // 3.2 람다 표현식
+        List<Apple> lambdaRedApples = filterApplesPredicate(apple, (Apple a) -> "red".equals(a.getColor()));
+        System.out.println(lambdaRedApples);
+
+        List<Apple> lambdaGreenApples = filterApplesPredicate(apple, (Apple a) -> "green".equals(a.getColor()));
+        System.out.println(lambdaGreenApples);
+
+        // 3.3 리스트 형식의 추상화
+        List<Apple> genericRedApples = filter(apple, (Apple a) -> "red".equals(a.getColor()));
+        System.out.println(genericRedApples);
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        List<Integer> evenNumbers = filter(numbers, (Integer i) -> i % 2 == 0);
+        System.out.println(evenNumbers);
+
     }
 
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
@@ -92,6 +124,16 @@ public class FilteringApples {
         for (Apple apple : inventory) {
             if (p.test(apple)) {
                 result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+        ArrayList<T> result = new ArrayList<>();
+        for (T e : list) {
+            if (p.test(e)) {
+                result.add(e);
             }
         }
         return result;
