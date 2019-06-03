@@ -2,6 +2,9 @@ package me.action.chapter2;
 
 import me.action.chapter1.Apple;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
@@ -28,5 +31,21 @@ public class Lambdas {
         Comparator<Apple> byWeightLambda = (Apple a1, Apple a2) -> a1.getColor().compareTo(a2.getColor());
 
         Predicate<Apple> a = (Apple apple) -> true;
+
+        // 3.1 1단계: 동작파라미터화를 기억하라
+        // 3.2 2단계 함수형 인터페이스를 이용해서 전달
+        try {
+            String result = processFile((BufferedReader br) -> br.readLine() + br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    // 3.1
+    public static String processFile(BufferedReaderProcessor p) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+            return p.process(br);
+        }
+    }
+
 }
