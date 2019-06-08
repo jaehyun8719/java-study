@@ -1,4 +1,4 @@
-package me.java.study.exam1;
+package me.action.chapter1;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,6 +11,6 @@ package me.java.study.exam1;
  * Description:
  * Copyright(©) 2019 by jaehyun.
  **/
-public interface Predicate<T> {
-    boolean test(T t);
+public interface ApplePredicate {
+    boolean test(Apple apple);
 }
