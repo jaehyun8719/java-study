@@ -39,6 +39,15 @@ public class Lambdas {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // 3.5.3 형식 추론
+        Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getColor().compareTo(a2.getColor());
+        Comparator<Apple> c2 = (a1, a2) -> a1.getColor().compareTo(a2.getColor());
+
+        // 3.5.4 지역 변수 사용
+        int portNumber = 1337;
+        Runnable r = () -> System.out.println(portNumber);
+
     }
 
     // 3.1
