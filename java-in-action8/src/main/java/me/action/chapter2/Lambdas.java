@@ -77,7 +77,7 @@ public class Lambdas {
         // 메서드 레퍼런스 사용
         inventory.sort(Comparator.comparing(Apple::getColor));
 
-        // 3.8.1 Comparator
+        // 3.8.1 Comparator 조합
         // 조합 역정렬
         inventory.sort(Comparator.comparing(Apple::getColor).reversed());
         // Comparator 연결
@@ -102,8 +102,6 @@ public class Lambdas {
         Predicate<Apple> redAndHeavyOrGreen = appleGreenTrue.and((Apple apple) -> apple.getWeight() > 90)
                                                             .or((Apple apple) -> "green".equals(apple.getColor()));
         inventory.forEach((Apple apple) -> System.out.println(redAndHeavyOrGreen.test(apple)));
-
-
     }
 
     // 3.1
