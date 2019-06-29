@@ -1,10 +1,9 @@
-package me.action.chpater5;
+package me.action.chapter5;
 
 import me.action.chapter3.Dish;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
