@@ -45,7 +45,7 @@ public class StreamVsCollection {
 
         // 내부 반복
         List<String> externalNames = names.stream()
-                                        .map(s1 -> names.get(0))
+                                        .map(name -> name.get(0))
                                         .collect(toList());
         externalNames.forEach(x -> System.out.println("externalNames = [" + x + "]"));
 
