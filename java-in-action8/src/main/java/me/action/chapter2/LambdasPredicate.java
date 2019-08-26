@@ -19,14 +19,14 @@ public class LambdasPredicate {
         // 4.1 LambdasPredicate
         java.util.function.Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 
-        List<String> listOfString = new ArrayList<>();
+        List<String> listOfString = Arrays.asList("green", "red", "");
         List<String> nonEmpty = filter(listOfString, nonEmptyStringPredicate);
     }
 
     // 4.1 LambdasPredicate
     public static <T> List<T> filter(List<T> list, java.util.function.Predicate<T> p) {
         List<T> results = new ArrayList<>();
-        for (T s : results) {
+        for (T s : list) {
             if (p.test(s)) {
                 results.add(s);
             }
